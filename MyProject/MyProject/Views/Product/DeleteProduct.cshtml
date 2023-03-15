@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DeleteProduct";
+}
+
+<h2>Delete Product</h2>
+
+<form method="POST" action="/category/delete">
+    <div class="form-group">
+        <label for="ProductId">Enter ProductId to Delete Product:</label>
+        <input type="text" class="form-control" id="ProductId" name="ProductId">
+    </div>
+
+    <button type="submit" class="btn btn-default"> Delete Product </button>
+</form>
+

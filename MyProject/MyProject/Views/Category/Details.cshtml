@@ -1,0 +1,40 @@
+﻿@using MyProject.Models;
+@{
+    ViewBag.Title = "Details";
+    List<Category> categories = ViewData["list"] as List<Category>;
+    List<Product> products = ViewData["products"] as List<Product>;
+}
+
+<h2>Product Details</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Category Id</th>
+            <th scope="col">Category Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @{
+                foreach (Product f in products)
+                {
+                    <td scope="row">@f.ProductId</td>
+                    <td>@f.ProductName</td>
+                }
+            }
+            @{
+                foreach (Category f in categories)
+                {                  
+                    <td>@f.CategoryId</td>
+                    <td>@f.CategoryName</td>
+                }
+            }
+        </tr>
+
+    </tbody>
+</table>
+
+
