@@ -67,7 +67,6 @@ namespace MyProject.Controllers
 
         // invoked when post method is called
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Update(int CategoryId, Category model)
         {
             using (var context = new MyContext())
@@ -80,11 +79,11 @@ namespace MyProject.Controllers
                     data.CategoryId = model.CategoryId;
                     data.CategoryName = model.CategoryName;
                    
-                    context.SaveChanges();   
-                    return RedirectToAction("index");
+                    context.SaveChanges();
+                    return RedirectToAction("index", "Category");
                 }
                 else
-                    return View();
+                    return RedirectToAction("index", "Category");
             }
         }
 
@@ -94,7 +93,6 @@ namespace MyProject.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int CategoryId)
         {
             using (var context = new MyContext())
@@ -104,10 +102,10 @@ namespace MyProject.Controllers
                 {
                     context.Categories.Remove(data);
                     context.SaveChanges();
-                    return RedirectToAction("index");
+                    return RedirectToAction("index", "Category");
                 }
                 else
-                    return View();
+                    return RedirectToAction("index", "Category");
             }
         }
 

@@ -37,7 +37,6 @@ namespace MyProject.Controllers
 
         // invoked when post method is called
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult UpdateProduct(int ProductId, Product model)
         {
             using (var context = new MyContext())
@@ -51,10 +50,10 @@ namespace MyProject.Controllers
                     data.ProductName = model.ProductName;
 
                     context.SaveChanges();
-                    return RedirectToAction("index");
+                    return RedirectToAction("index", "Category");
                 }
                 else
-                    return View();
+                    return RedirectToAction("index", "Category");
             }
         }
 
@@ -64,7 +63,6 @@ namespace MyProject.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteProduct(int ProductId)
         {
             using (var context = new MyContext())
@@ -74,10 +72,10 @@ namespace MyProject.Controllers
                 {
                     context.Products.Remove(data);
                     context.SaveChanges();
-                    return RedirectToAction("index");
+                    return RedirectToAction("index", "Category");
                 }
                 else
-                    return View();
+                    return RedirectToAction("index", "Category");
             }
         }
     }
