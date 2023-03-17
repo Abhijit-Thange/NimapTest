@@ -212,3 +212,7 @@ C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\obj\Debug\MyP
 C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\obj\Debug\MyProject.csproj.CopyComplete
 C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\obj\Debug\MyProject.dll
 C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\obj\Debug\MyProject.pdb
+C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.dll
+C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.Mvc.dll
+C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.xml
+C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.Mvc.xml

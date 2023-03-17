@@ -1,0 +1,44 @@
+﻿@using MyProject.Models;
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ProductList";
+   
+}
+
+
+<h2>ProductList</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Category Id</th>
+            <th scope="col">Category Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @{
+                foreach (var f in ViewBag.model )
+                {
+                    <td scope="row">@f.ProductId</td>
+                    <td>@f.ProductName</td>
+                }
+            }
+            @{
+                foreach (var f in ViewBag.model)
+                {
+                    <td>@f.CategoryId</td>
+                    <td>@f.CategoryName</td>
+                }
+            }
+        </tr>
+    </tbody>
+</table>
+
+Page@(Model.TotalPages<Model.PageNumber ? 0 : Model.PageNumber)/@Model.TotalPage
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page= page }))
+</div>

@@ -10,7 +10,7 @@ namespace MyProject.Controllers
     public class CategoryController : Controller
     {
         MyContext mgr=new MyContext();
-        private int? page;
+       // private int? page;
 
         // GET: Category
         public ActionResult Index()
@@ -31,6 +31,31 @@ namespace MyProject.Controllers
             return RedirectToAction("index", "Category");
         }
 
+        //Pagination on server side
+        public ActionResult ProductList(int? page)
+        {
+           // var pageNumber = page;
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            var products = (from p in mgr.Products
+                            join c in mgr.Categories on p.CategoryId equals c.CategoryId
+                            select new
+                            {
+                                ProductId = p.ProductId,
+                                ProductName = p.ProductName,
+                                CategoryId = p.CategoryId,
+                                CategoryName = c.CategoryName
+                            })
+                            .OrderBy(p => p.CategoryId)
+                            .Skip((pageNumber - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
+            ViewBag.TotalPages = Math.Ceiling((double)mgr.Products.Count() / pageSize);
+            ViewBag.PageNumber = pageNumber;
+            ViewData["list"] = products;
+            return View(); 
+        }
+
         public ActionResult Details()
         {
             List<Category> list = mgr.Categories.ToList();
@@ -40,7 +65,7 @@ namespace MyProject.Controllers
             return View();
 
             // for retriving the records for current page.
-           /* int pageSize = 10;
+          /* int pageSize = 10;
             int pageNumber = (page ?? 1);
             var products = (from p in mgr.Products
                             join c in mgr.Categories on p.CategoryId equals c.CategoryId
