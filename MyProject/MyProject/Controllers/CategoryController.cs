@@ -1,5 +1,6 @@
 ﻿using MyProject.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,6 +35,7 @@ namespace MyProject.Controllers
         //Pagination on server side
         public ActionResult ProductList(int? page)
         {
+            ArrayList list = new ArrayList();
            // var pageNumber = page;
             int pageSize = 10;
             int pageNumber = (page ?? 1);
@@ -52,7 +54,9 @@ namespace MyProject.Controllers
                             .ToList();
             ViewBag.TotalPages = Math.Ceiling((double)mgr.Products.Count() / pageSize);
             ViewBag.PageNumber = pageNumber;
+            list.Add(products);
             ViewData["list"] = products;
+            ViewBag.data = products;
             return View(); 
         }
 

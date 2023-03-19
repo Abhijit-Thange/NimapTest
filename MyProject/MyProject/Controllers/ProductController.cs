@@ -26,6 +26,7 @@ namespace MyProject.Controllers
         public ActionResult Insert(Product c)
         {
             mgr.Products.Add(c);
+            
             mgr.SaveChanges();
             return RedirectToAction("index", "Category");
         }

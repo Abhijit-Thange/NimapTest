@@ -20,21 +20,21 @@
         <tr>
             @{
                 foreach (Product f in products)
-                {
-                    <td scope="row">@f.ProductId</td>
-                    <td>@f.ProductName</td>
-                }
+                {                
+                    <td>@f.ProductId</td>
+                    <td>@f.ProductName</td>               
+                }          
             }
             @{
                 foreach (Category f in categories)
-                {                  
-                    <td>@f.CategoryId</td>
-                    <td>@f.CategoryName</td>
+                {
+                        <td>@f.CategoryId</td>
+                        <td>@f.CategoryName</td>
                 }
             }
-        </tr>
+            </tr>
 
-    </tbody>
+        </tbody>
 </table>
 
 
