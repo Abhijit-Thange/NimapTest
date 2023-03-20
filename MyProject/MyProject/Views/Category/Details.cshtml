@@ -1,8 +1,8 @@
 ﻿@using MyProject.Models;
 @{
     ViewBag.Title = "Details";
-    List<Category> categories = ViewData["list"] as List<Category>;
-    List<Product> products = ViewData["products"] as List<Product>;
+  //  List<Category> categories = ViewData["list"] as List<Category>;
+  //  List<Product> products = ViewData["products"] as List<Product>;
 }
 
 <h2>Product Details</h2>
@@ -17,24 +17,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @{
-                foreach (Product f in products)
-                {                
+        @{
+            foreach (var f in (IEnumerable<Data>)ViewBag.data)
+            {
+                <tr>
                     <td>@f.ProductId</td>
-                    <td>@f.ProductName</td>               
-                }          
+                    <td>@f.ProductName</td>
+                    <td>@f.CategoryId</td>
+                    <td>@f.CategoryName</td>
+                </tr>
             }
-            @{
-                foreach (Category f in categories)
-                {
-                        <td>@f.CategoryId</td>
-                        <td>@f.CategoryName</td>
-                }
-            }
-            </tr>
+        }
 
-        </tbody>
+    </tbody>
 </table>
 
 

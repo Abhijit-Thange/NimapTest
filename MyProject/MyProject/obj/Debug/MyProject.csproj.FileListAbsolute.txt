@@ -216,3 +216,4 @@ C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList
 C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.Mvc.dll
 C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.xml
 C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\PagedList.Mvc.xml
+C:\Users\thang\Desktop\NimapInfotech\NimapTest\MyProject\MyProject\bin\HtmlHelper.dll

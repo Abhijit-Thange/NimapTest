@@ -41,11 +41,11 @@ namespace MyProject.Controllers
             int pageNumber = (page ?? 1);
             var products = (from p in mgr.Products
                             join c in mgr.Categories on p.CategoryId equals c.CategoryId
-                            select new
+                            select new Data
                             {
                                 ProductId = p.ProductId,
                                 ProductName = p.ProductName,
-                                CategoryId = p.CategoryId,
+                                CategoryId = c.CategoryId,
                                 CategoryName = c.CategoryName
                             })
                             .OrderBy(p => p.CategoryId)
@@ -54,7 +54,7 @@ namespace MyProject.Controllers
                             .ToList();
             ViewBag.TotalPages = Math.Ceiling((double)mgr.Products.Count() / pageSize);
             ViewBag.PageNumber = pageNumber;
-            list.Add(products);
+            list.Add(products);           
             ViewData["list"] = products;
             ViewBag.data = products;
             return View(); 
@@ -62,31 +62,26 @@ namespace MyProject.Controllers
 
         public ActionResult Details()
         {
-            List<Category> list = mgr.Categories.ToList();
-            List<Product> products = mgr.Products.ToList();
-            ViewData["list"] = list;
-            ViewData["products"] = products;
-            return View();
+            /* List<Category> list = mgr.Categories.ToList();
+             List<Product> products = mgr.Products.ToList();
+             ViewData["list"] = list;
+             ViewData["products"] = products;
+             return View();*/
 
             // for retriving the records for current page.
-          /* int pageSize = 10;
-            int pageNumber = (page ?? 1);
+
             var products = (from p in mgr.Products
                             join c in mgr.Categories on p.CategoryId equals c.CategoryId
-                            select new
+                            select new Data
                             {
                                 ProductId = p.ProductId,
                                 ProductName = p.ProductName,
-                                CategoryId = p.CategoryId,
+                                CategoryId = c.CategoryId,
                                 CategoryName = c.CategoryName
-                            })
-                            .OrderBy(p => p.ProductId)
-                            .Skip((pageNumber - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToList();
-            ViewBag.TotalPages = Math.Ceiling((double)mgr.Products.Count() / pageSize);
-            ViewBag.PageNumber = pageNumber;
-            return View(products);*/
+                            });
+                           
+            ViewBag.data = products;
+            return View();
         }
 
         public ActionResult Update()
@@ -109,10 +104,10 @@ namespace MyProject.Controllers
                     data.CategoryName = model.CategoryName;
                    
                     context.SaveChanges();
-                    return RedirectToAction("index", "Category");
+                    return RedirectToAction("index", "Home");
                 }
                 else
-                    return RedirectToAction("index", "Category");
+                    return View();
             }
         }
 
@@ -131,10 +126,10 @@ namespace MyProject.Controllers
                 {
                     context.Categories.Remove(data);
                     context.SaveChanges();
-                    return RedirectToAction("index", "Category");
+                    return RedirectToAction("index", "Home");
                 }
                 else
-                    return RedirectToAction("index", "Category");
+                    return View();
             }
         }
 

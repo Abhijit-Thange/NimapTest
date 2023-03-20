@@ -2,11 +2,15 @@
 @using PagedList;
 @using PagedList.Mvc;
 @using System.Collections;
+@using System.Web.Mvc.Html;
+@using System.Web.Helpers;
+@using System.Web.ModelBinding;
+
 @{
     ViewBag.Title = "ProductList";
     ArrayList list = ViewData["list"] as ArrayList;
+  //  var data = ViewBag.data;
 
-   
 }
 
 
@@ -23,20 +27,20 @@
     <tbody>
         
             @{
-                foreach (var f in ViewBag.data)
+                foreach (Data f in (IEnumerable<Data>)ViewBag.data)
                 {
                     <tr>
-                        <td>@f.ProductId</td>
+                        <td>@f.ProductId<td>
                         <td>@f.ProductName</td>
                         <td>@f.CategoryId</td>
-                        <td>@f.CategoryId</td>
+                        <td>@f.CategoryName</td>
                     </tr>
                 }
               }                    
     </tbody>
 </table>
 
-Page@(Model.TotalPages<Model.PageNumber ? 0 : Model.PageNumber)/@Model.TotalPage
+Page@(ViewBag.TotalPages<Model.PageNumber ? 0 : ViewBag.PageNumber)/@ViewBag.TotalPage
 <div>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+   
 </div>

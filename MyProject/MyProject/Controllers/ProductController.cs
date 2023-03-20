@@ -25,10 +25,9 @@ namespace MyProject.Controllers
         [HttpPost]
         public ActionResult Insert(Product c)
         {
-            mgr.Products.Add(c);
-            
+            mgr.Products.Add(c);           
             mgr.SaveChanges();
-            return RedirectToAction("index", "Category");
+            return RedirectToAction("index", "Home");
         }
 
         public ActionResult UpdateProduct()
@@ -51,10 +50,10 @@ namespace MyProject.Controllers
                     data.ProductName = model.ProductName;
 
                     context.SaveChanges();
-                    return RedirectToAction("index", "Category");
+                    return RedirectToAction("index", "Home");
                 }
                 else
-                    return RedirectToAction("index", "Category");
+                    return View();
             }
         }
 
@@ -73,10 +72,10 @@ namespace MyProject.Controllers
                 {
                     context.Products.Remove(data);
                     context.SaveChanges();
-                    return RedirectToAction("index", "Category");
+                    return RedirectToAction("index", "Home");
                 }
                 else
-                    return RedirectToAction("index", "Category");
+                    return View();
             }
         }
     }
