@@ -42,5 +42,5 @@
 
 Page@(ViewBag.TotalPages<Model.PageNumber ? 0 : ViewBag.PageNumber)/@ViewBag.TotalPage
 <div>
-   
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 </div>
