@@ -1,0 +1,17 @@
+
+Git and GitHub.......
+
+. git bash here : bash is a terminal.
+. git init : Initialized empty git Repository in your folder.
+. esc+:+w+q : To exit from linux editor.
+. ls -lart : Shows your all hidden files / folders . 
+. .git/ : is the base folder. our all git data store in the .git folder.
+. git add . / git add -A : To add all untracked files into staging area.
+. touch fileName : touch create a blank file.
+. git checkout -f(for all files) / file name : To match files your last commit. other commit are removed.
+. git log : shows your all commits.
+. git diff : Compare the working directory and staging area.
+. git diff --staged : compare staging area with last commit.
+. git rm --cached file name : to remove file from git repository.
+. git rm fileName : delete file from git repository and local storage.
+. 
